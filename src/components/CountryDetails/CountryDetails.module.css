@@ -1,0 +1,15 @@
+.CardContainer {
+    max-width: 540px;
+     margin:5px;
+     box-shadow:0 2px 3px #ccc;
+     cursor:pointer;
+     -webkit-animation-duration: 10s;
+      animation-duration: 10s;
+
+}
+
+.CardContainer:hover{
+    background-color: #ccc;
+    opacity:0.8
+}
+
