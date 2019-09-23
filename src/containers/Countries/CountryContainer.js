@@ -20,6 +20,9 @@ class CountryContainer extends PureComponent {
             this.setState({countries:response.data})
         })
     }
+    componentDidUpdate() {
+        window.scrollTo(0, 0)
+      }
 
     inputHandler = (event) => {
             const countrySearchResult = this.state.countries.filter(country => {

@@ -14,17 +14,30 @@ const moreCountryDetails = (props) => {
         })
         return languages.replace(/,\s*$/, "");
         }else{
-            return null
+            return "None available"
         }
     }
 
     function test () {
 
     }
+
+    function parseObject (obj) {
+        let objectEntries = ''
+       if(Object.values(obj).length){
+            Object.entries(obj).forEach(element => {
+                objectEntries += element[0] + ": " + + "" + element[1] + ", "
+        })
+        return objectEntries.replace(/,\s*$/, "");
+       }else{
+           return "None available"
+       }
+       
+    }
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-6 " style={{boxShadow:" 0px 2px 3px #ccc"}}>
+                <div className="col-md-6 " style={{boxShadow:" 0px 2px 3px #ccc",paddingTop:"5px"}}>
                     <CountryDetails country={props.data } showCountryDetails={test}/>
                 </div>
                 <div className="col-md-6" style={{boxShadow:" 0px 2px 3px #ccc",paddingTop:'10px'}}>
@@ -32,8 +45,9 @@ const moreCountryDetails = (props) => {
                         <small><strong>Calling Codes: </strong>{parseData(props.data.callingCodes)}</small><br />
                         <small><strong>Latlng: </strong>{parseData(props.data.latlng)}</small><br />
                         <small><strong>Timezone: </strong>{parseData(props.data.timezones)}</small><br />
-                        <small><strong>Regionalblocs: </strong></small><br />
-                        <small><strong>Translations: </strong></small><br />
+                        <small><strong>Regionalblocs: </strong>{ props.data.regionalBlocs.length ? 
+                        Object.values(props.data.regionalBlocs[0]).join(", ").replace(/,\s*$/, "") : "None available"}</small><br />
+                        <small><strong>Translations: </strong>{parseObject(props.data.translations)}</small><br />
                         <small><strong>Borders: </strong>{parseData(props.data.borders)}</small><br />
                         <small><strong>AltSpelling: </strong>{parseData(props.data.altSpellings)}</small><br />
                         <small><strong>Translations: </strong>{parseData(props.data.altSpellings)}</small><br />
