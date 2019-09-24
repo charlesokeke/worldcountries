@@ -20,6 +20,8 @@ LEVEL 1. RESET STYLES
     background-color: transparent;
     border-radius: 0;
     border: none;
+    outline: none;
+    
   
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -30,11 +32,13 @@ LEVEL 1. RESET STYLES
   
   .field__input:focus::-webkit-input-placeholder{
     color: var(--uiFieldPlaceholderColor);
+    outline:none
   }
   
   .field__input:focus::-moz-placeholder{
     color: var(--uiFieldPlaceholderColor);
     opacity: 1;
+    outline-color: none;
   }
   
   /*

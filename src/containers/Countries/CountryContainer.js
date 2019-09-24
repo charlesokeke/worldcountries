@@ -39,6 +39,8 @@ class CountryContainer extends PureComponent {
             })
     }
 
+   
+
     clearInput = () => {
         this.setState({value: ''})
     }
@@ -49,14 +51,11 @@ class CountryContainer extends PureComponent {
         console.log(data)
     }
     
-    africanCountriesHandler = () => {
+    continentCountriesHandler = (regions) => {
         let countryName = null
-        const africanCountries = this.state.countries.filter((country) =>{
-            return country.region.toLowerCase() === "africa" || 
-            country.subregion.toLowerCase() === "western africa" ||
-            country.subregion.toLowerCase() === "northern africa" ||
-            country.subregion.toLowerCase() === "southern africa" ||
-            country.subregion.toLowerCase() === "eastern africa"
+        const showCountriesInContinent = this.state.countries.filter((country) =>{
+            return regions.includes(country.region.toLowerCase())  || regions.includes(country.subregion.toLowerCase())
+            
         })
         .map((element,index) => {
             countryName = element.region
@@ -67,86 +66,15 @@ class CountryContainer extends PureComponent {
                     />
         })
         this.setState({
-            countryResult:africanCountries,
+            countryResult:showCountriesInContinent,
              countryDetails:null,
-              numberOfCountries:africanCountries.length,
+              numberOfCountries:showCountriesInContinent.length,
                countryRegion:countryName
             })
             
     }
 
-    europeanCountriesHandler = () => {
-        let countryName = null
-        const europeanCountries = this.state.countries.filter((country) =>{
-            return country.region.toLowerCase() === "europe" || 
-            country.subregion.toLowerCase() === "western europe" ||
-            country.subregion.toLowerCase() === "northern europe" ||
-            country.subregion.toLowerCase() === "southern europe" ||
-            country.subregion.toLowerCase() === "eastern europe"
-        })
-        .map((element,index) => {
-            countryName = element.region
-            return <CountryDetails 
-                        key={index} 
-                        country={element}
-                        showCountryDetails= {this.getCountryDetails}
-                    />
-        })
-        this.setState({
-            countryResult:europeanCountries, 
-            countryDetails:null,
-            numberOfCountries:europeanCountries.length,
-            countryRegion:countryName
-        })
-    }
-
-    americasCountriesHandler = () => {
-        let countryName = null
-        const americasCountries = this.state.countries.filter((country) =>{
-            return country.region.toLowerCase() === "americas" || 
-            country.subregion.toLowerCase() === "western america" ||
-            country.subregion.toLowerCase() === "north america" ||
-            country.subregion.toLowerCase() === "south america" ||
-            country.subregion.toLowerCase() === "central america"
-        })
-        .map((element,index) => {
-            countryName = element.region
-            return <CountryDetails 
-                    key={index} 
-                    country={element} 
-                    showCountryDetails={this.getCountryDetails}
-                    />
-        })
-        this.setState({
-            countryResult:americasCountries,
-             countryDetails:null,
-             numberOfCountries:americasCountries.length,
-             countryRegion:countryName
-            })
-    }
-
-    asiaCountriesHandler = () => {
-        let countryName = null
-        const asianCountries = this.state.countries.filter((country) =>{
-            return country.region.toLowerCase() === "asia" || 
-            country.subregion.toLowerCase() === "western asia" ||
-            country.subregion.toLowerCase() === "northern asia" ||
-            country.subregion.toLowerCase() === "southern asia" ||
-            country.subregion.toLowerCase() === "eastern asia"
-        })
-        .map((element,index) => {
-            countryName = element.region
-            return <CountryDetails key={index} country={element} showCountryDetails= {this.getCountryDetails}/>
-        })
-        this.setState({
-            countryResult:asianCountries,
-             countryDetails:null, 
-             numberOfCountries:asianCountries.length,
-             countryRegion:countryName
-            })
-    }
-    
-
+   
     render () {
         console.log(this.state.numberOfCountries)
         
@@ -160,10 +88,10 @@ class CountryContainer extends PureComponent {
                     <div style={{display:"flex", justifyContent:"center", alignItems:"center", paddingBottom:"10px",position:"relative"}} >
                         
                       <ul className={`list-group list-group-horizontal-lg ${styles.CountryRegions}`} >
-                        <li className="list-group-item " onClick={this.asiaCountriesHandler}>Asia</li>
-                        <li className="list-group-item" onClick={this.europeanCountriesHandler}>Europe</li>
-                        <li className="list-group-item" onClick={this.americasCountriesHandler}>Americas</li>
-                        <li className="list-group-item" onClick={this.africanCountriesHandler}>Africa</li>
+                        <li className="list-group-item " onClick={() => this.continentCountriesHandler( ["asia","western asia","south-eastern asia","northern asia", "southern asia","central asia","eastern asia"])}>Asia</li>
+                        <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["europe","western europe","northern europe", "southern europe","central europe","eastern europe","western europe"])}>Europe</li>
+                        <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["americas","western america","northern america", "south america","central america"])}>Americas</li>
+                        <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["africa","western africa","northern africa", "southern africa","eastern africa"])}>Africa</li>
 
                       </ul>
                       

@@ -1,9 +1,11 @@
 {
+  "homepage": "https://charlesokeke.github.io/worldcountries",
   "name": "may-countries-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "gh-pages": "^2.1.1",
     "google-maps-react": "^2.0.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -12,6 +14,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
