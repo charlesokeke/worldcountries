@@ -5,15 +5,16 @@ import Axios from "axios"
 const mapStyles = {
     width: '100%',
     height: '100%',
-    overflow:"scroll !important"
+    
   };
 class MapContainer extends Component {
   state ={
     data:[],
     
   }
+  //https://still-coast-42220.herokuapp.com/cities
   componentDidMount() {
-    Axios.post("http://localhost:3001/cities",{cities:"cities in " + this.props.countryname})
+    Axios.post("https://still-coast-42220.herokuapp.com/cities",{cities:"cities in " + this.props.countryname})
     .then(response => {
       console.log(response.data.results)
       const cities = response.data.results.map((element,index) =>{
