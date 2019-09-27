@@ -61,7 +61,11 @@ const moreCountryDetails = (props) => {
             </div>
             <div className="row">
                 <div className="col-12 pt-2 pl-2 pr-2" style={{minHeight:"500px"}}>
-                    <MapContainer lat={ props.data.latlng.length ? props.data.latlng[0] : 0} lng={props.data.latlng.length ? props.data.latlng[1]: 0}/>
+                    <MapContainer 
+                     lat={ props.data.latlng.length ? props.data.latlng[0] : 0}
+                     lng={props.data.latlng.length ? props.data.latlng[1]: 0}
+                     countryname={props.data.name}
+                     />
                 </div>
             </div>
     </div>

@@ -79,7 +79,7 @@ class CountryContainer extends PureComponent {
         console.log(this.state.numberOfCountries)
         
         return (
-            <div style={{paddingTop:"100px", position:"relative"}}>
+            <div style={{paddingTop:"100px", position:"relative",boxSizing:"border-box"}}>
                 {this.state.numberOfCountries ? 
                 <span style={{position:"absolute", color:"purple",padding:"8px",fontWeight:"500",top:"10px", right:"20px",border:"2px solid #ccc"}}>Total Countries in {this.state.countryRegion}: {this.state.numberOfCountries}</span>:
                  null
@@ -112,7 +112,7 @@ class CountryContainer extends PureComponent {
                 </div>
                 
                 </main>
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"row",flexWrap:"wrap", padding:" 10px 10px 4rem 10px"}}>
+                <div style={{display:"flex", boxSizing:"border-box",justifyContent:"center", alignItems:"center", flexDirection:"row",flexWrap:"wrap", padding:" 10px 10px 4rem 10px"}}>
                     {!this.state.countryDetails ? this.state.countryResult: <MoreCountryDetail data={this.state.countryDetails}/>}
                 </div>
             </div>

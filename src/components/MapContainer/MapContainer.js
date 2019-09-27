@@ -1,13 +1,34 @@
 import React,{Component} from "react"
 import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
+import Axios from "axios"
 
 const mapStyles = {
     width: '100%',
     height: '100%',
+    overflow:"scroll !important"
   };
 class MapContainer extends Component {
+  state ={
+    data:[],
+    
+  }
+  componentDidMount() {
+    Axios.post("http://localhost:3001/cities",{cities:"cities in " + this.props.countryname})
+    .then(response => {
+      console.log(response.data.results)
+      const cities = response.data.results.map((element,index) =>{
+        return <Marker position={element.geometry.location} title={element.formatted_address} key={index}/>
+      })
+      this.setState({data:cities})
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+  }
 
     render(){
+      console.log(this.state.data)
         return (
         <Map
           google={this.props.google}
@@ -15,7 +36,8 @@ class MapContainer extends Component {
           style={mapStyles}
           initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
         >
-            <Marker position={{ lat: this.props.lat, lng: this.props.lng}} />
+            
+            {this.state.data}
         </Map>
         )
     }
