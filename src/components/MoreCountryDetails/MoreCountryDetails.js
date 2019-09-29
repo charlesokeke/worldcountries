@@ -12,7 +12,7 @@ class  MoreCountryDetails extends PureComponent {
     }
 
     onMarkerClick = (cityDetails) =>{
-        Axios.post("http://localhost:3001/city_details",{cityDetails:cityDetails})
+        Axios.post("https://still-coast-42220.herokuapp.com/city_details",{cityDetails:cityDetails})
         .then(response => {
           console.log(response.data.result)
           console.log(response.data.result.name)

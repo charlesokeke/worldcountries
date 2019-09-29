@@ -25,7 +25,7 @@ class MapContainer extends Component {
       }
     
     },5000)
-    Axios.post("http://localhost:3001/cities",{cities:"cities in " + this.props.countryname})
+    Axios.post("https://still-coast-42220.herokuapp.com/cities",{cities:"cities in " + this.props.countryname})
     .then(response => {
       console.log(response.data.results)
       const cities = response.data.results.map((element,index) =>{
@@ -45,7 +45,7 @@ class MapContainer extends Component {
 
   getMoreCities = () =>{
     if(this.state.nextPageToken){
-      Axios.post("http://localhost:3001/token",{nextPageToken:this.state.nextPageToken})
+      Axios.post("https://still-coast-42220.herokuapp.com/token",{nextPageToken:this.state.nextPageToken})
       .then(response =>{
         const cities = response.data.results.map((element,index) =>{
           return <Marker 
