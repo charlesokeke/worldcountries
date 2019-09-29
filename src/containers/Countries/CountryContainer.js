@@ -112,7 +112,7 @@ class CountryContainer extends PureComponent {
                 </div>
                 
                 </main>
-                <div style={{display:"flex", boxSizing:"border-box",justifyContent:"center", alignItems:"center", flexDirection:"row",flexWrap:"wrap", padding:" 10px 10px 4rem 10px"}}>
+                <div style={{display:"flex", boxSizing:"border-box",justifyContent:"center", alignItems:"center", flexDirection:"row",flexWrap:"wrap", padding:" 10px 10px 6rem 10px"}}>
                     {!this.state.countryDetails ? this.state.countryResult: <MoreCountryDetail data={this.state.countryDetails}/>}
                 </div>
             </div>

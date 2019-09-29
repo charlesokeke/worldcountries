@@ -10,17 +10,32 @@ const mapStyles = {
 class MapContainer extends Component {
   state ={
     data:[],
+    nextPageToken:null,
+    cityDetail:[]
     
   }
   //https://still-coast-42220.herokuapp.com/cities
   componentDidMount() {
-    Axios.post("https://still-coast-42220.herokuapp.com/cities",{cities:"cities in " + this.props.countryname})
+    var stop = setInterval(() =>{
+      if(this.state.nextPageToken){
+        console.log('hello')
+        this.getMoreCities()
+      }else{
+        clearInterval(stop)
+      }
+    
+    },5000)
+    Axios.post("http://localhost:3001/cities",{cities:"cities in " + this.props.countryname})
     .then(response => {
       console.log(response.data.results)
       const cities = response.data.results.map((element,index) =>{
-        return <Marker position={element.geometry.location} title={element.formatted_address} key={index}/>
+        return <Marker position={element.geometry.location}
+                    title={element.formatted_address}
+                    key={element.formatted_address} 
+                    onClick={() => this.props.onMarkerClick(element.place_id)}
+                />
       })
-      this.setState({data:cities})
+      this.setState({data:cities,nextPageToken:response.data.next_page_token})
     })
     .catch((error) => {
         console.log(error)
@@ -28,18 +43,40 @@ class MapContainer extends Component {
 
   }
 
+  getMoreCities = () =>{
+    if(this.state.nextPageToken){
+      Axios.post("http://localhost:3001/token",{nextPageToken:this.state.nextPageToken})
+      .then(response =>{
+        const cities = response.data.results.map((element,index) =>{
+          return <Marker 
+                    position={element.geometry.location}
+                    title={element.formatted_address} key={element.formatted_address} 
+                    onClick={() => this.props.onMarkerClick(element.place_id)} 
+                  />
+        })
+        this.setState((state,props) => {
+          return {data:[...state.data, ...cities],nextPageToken:response.data.next_page_token}
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+  }
+
+  
     render(){
-      console.log(this.state.data)
         return (
-        <Map
-          google={this.props.google}
-          zoom={8}
-          style={mapStyles}
-          initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
-        >
+          
+              <Map
+                google={this.props.google}
+                zoom={5}
+                style={mapStyles}
+                initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
+              >
+                  {this.state.data}
+              </Map>
             
-            {this.state.data}
-        </Map>
         )
     }
 }
