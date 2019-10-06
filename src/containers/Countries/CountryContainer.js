@@ -76,11 +76,12 @@ class CountryContainer extends PureComponent {
 
    
     render () {
-        console.log(this.state.numberOfCountries)
+        //console.log(this.state.numberOfCountries)
+        const {numberOfCountries, value, countryDetails, countryResult} = this.state
         
         return (
             <div style={{paddingTop:"100px", position:"relative",boxSizing:"border-box"}}>
-                {this.state.numberOfCountries ? 
+                {numberOfCountries ? 
                 <span style={{position:"absolute", color:"purple",padding:"8px",fontWeight:"500",top:"10px", right:"20px",border:"2px solid #ccc"}}>Total Countries in {this.state.countryRegion}: {this.state.numberOfCountries}</span>:
                  null
                  }
@@ -101,7 +102,7 @@ class CountryContainer extends PureComponent {
                         <input 
                             className={[styles["field__input"], styles["a-field__input"]].join(" ")} 
                             placeholder="e.g. Japan" required 
-                            value={this.state.value} 
+                            value={value} 
                             onChange={this.inputHandler}
                             onBlur={this.clearInput}
                         />
@@ -113,7 +114,7 @@ class CountryContainer extends PureComponent {
                 
                 </main>
                 <div style={{display:"flex", boxSizing:"border-box",justifyContent:"center", alignItems:"center", flexDirection:"row",flexWrap:"wrap", padding:" 10px 10px 6rem 10px"}}>
-                    {!this.state.countryDetails ? this.state.countryResult: <MoreCountryDetail data={this.state.countryDetails}/>}
+                    {!countryDetails ? countryResult: <MoreCountryDetail data={countryDetails}/>}
                 </div>
             </div>
             )

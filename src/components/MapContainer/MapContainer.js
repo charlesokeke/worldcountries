@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
+import Spinner from 'react-bootstrap/Spinner'
 import Axios from "axios"
 
 const mapStyles = {
@@ -11,14 +12,14 @@ class MapContainer extends Component {
   state ={
     data:[],
     nextPageToken:null,
-    cityDetail:[]
+    cityDetail:[],
+    showspinner:false
     
   }
   //https://still-coast-42220.herokuapp.com/cities
   componentDidMount() {
     var stop = setInterval(() =>{
       if(this.state.nextPageToken){
-        console.log('hello')
         this.getMoreCities()
       }else{
         clearInterval(stop)
@@ -74,7 +75,7 @@ class MapContainer extends Component {
                 style={mapStyles}
                 initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
               >
-                  {this.state.data}
+                  {this.state.data.length ? this.state.data : <div style={{position:"relative", display:"flex", alignItems:"center", justifyContent:"center"}}><Spinner animation="border" variant="info"/></div>}
               </Map>
             
         )

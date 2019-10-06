@@ -14,8 +14,8 @@ class  MoreCountryDetails extends PureComponent {
     onMarkerClick = (cityDetails) =>{
         Axios.post("https://still-coast-42220.herokuapp.com/city_details",{cityDetails:cityDetails})
         .then(response => {
-          console.log(response.data.result)
-          console.log(response.data.result.name)
+          //console.log(response.data.result)
+          //console.log(response.data.result.name)
           const cityPhotos = response.data.result.photos.map((element) => {
               return  <img 
                         key={element.photo_reference} 
@@ -27,8 +27,10 @@ class  MoreCountryDetails extends PureComponent {
                         height="200px" 
                        />
           })
-            this.setState({cityDetailsPhotos:cityPhotos,cityName:response.data.result.name})
           
+            this.setState({cityDetailsPhotos:cityPhotos.length ?
+                 cityPhotos : "No photos available",
+                 cityName:response.data.result.formatted_address})
         })
         .catch(error => {
           console.log(error)
@@ -66,30 +68,33 @@ class  MoreCountryDetails extends PureComponent {
     }
     render () {
         console.log(this.state.cityDetailsPhotos)
+        const {data:{callingCodes,latlng,timezones,regionalBlocs, translations,borders,altSpellings,topLevelDomain,area, name}, data} = this.props
+        const {cityDetailsPhotos,cityName} = this.state
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 " style={{boxShadow:" 0px 2px 3px #ccc",paddingTop:"5px"}}>
-                        <CountryDetails country={this.props.data } showCountryDetails={this.test}/>
+                        <CountryDetails country={data} showCountryDetails={this.test}/>
                             <div style={{display:"flex",boxShadow:" 0px 2px 3px #ccc", position:"relative",boxSizing:"border-box", height:"100px",flexDirection:"row",backgroundColor:"#ccc",marginBottom:"3px", overflow:"auto",}}>
-                                   {this.state.cityDetailsPhotos.length ? this.state.cityDetailsPhotos : <h6 className="text-muted pl-1">Click markers for city photos</h6>} 
+                                   {cityDetailsPhotos.length ? cityDetailsPhotos : 
+                                   <h6 className="text-muted pt-3" style={{margin:"0 auto",boxSizing:"border-box"}}>Click Map Markers</h6>
+                                } 
                             </div>
-                            <p className="text-center"> <strong>{this.state.cityName ? `The city of ${this.state.cityName}` : null}</strong></p>
+                            <p className="text-center"> <strong>{cityName ? `The city of ${cityName}` : null}</strong></p>
                         
                     </div>
                     <div className="col-md-6" style={{boxShadow:" 0px 2px 3px #ccc",paddingTop:'10px'}}>
                         <p style={{boxShadow:"0px 2px 3px",padding:"20px"}}>
-                            <small><strong>Calling Codes: </strong>{this.parseData(this.props.data.callingCodes)}</small><br />
-                            <small><strong>Latlng: </strong>{this.parseData(this.props.data.latlng)}</small><br />
-                            <small><strong>Timezone: </strong>{this.parseData(this.props.data.timezones)}</small><br />
-                            <small><strong>Regionalblocs: </strong>{this.props.data.regionalBlocs.length ? 
-                            Object.values(this.props.data.regionalBlocs[0]).join(", ").replace(/,\s*$/, "") : "None available"}</small><br />
-                            <small><strong>Translations: </strong>{this.parseObject(this.props.data.translations)}</small><br />
-                            <small><strong>Borders: </strong>{this.parseData(this.props.data.borders)}</small><br />
-                            <small><strong>AltSpelling: </strong>{this.parseData(this.props.data.altSpellings)}</small><br />
-                            <small><strong>Translations: </strong>{this.parseData(this.props.data.altSpellings)}</small><br />
-                            <small><strong>TopLevelDomain: </strong>{this.parseData(this.props.data.topLevelDomain)}</small><br />
-                            <small><strong>Area: </strong>{`${this.props.data.area}km`}</small>
+                            <small><strong>Calling Codes: </strong>{this.parseData(callingCodes)}</small><br />
+                            <small><strong>Latlng: </strong>{this.parseData(latlng)}</small><br />
+                            <small><strong>Timezone: </strong>{this.parseData(timezones)}</small><br />
+                            <small><strong>Regionalblocs: </strong>{regionalBlocs.length ? Object.values(regionalBlocs[0]).join(", ").replace(/,\s*$/, "") : "None available"}</small><br />
+                            <small><strong>Translations: </strong>{this.parseObject(translations)}</small><br />
+                            <small><strong>Borders: </strong>{this.parseData(borders)}</small><br />
+                            <small><strong>AltSpelling: </strong>{this.parseData(altSpellings)}</small><br />
+                            <small><strong>Translations: </strong>{this.parseData(altSpellings)}</small><br />
+                            <small><strong>TopLevelDomain: </strong>{this.parseData(topLevelDomain)}</small><br />
+                            <small><strong>Area: </strong>{`${area}km`}</small>
     
     
     
@@ -98,11 +103,11 @@ class  MoreCountryDetails extends PureComponent {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12 pt-2" style={{minHeight:"500px"}}>
+                    <div className="col-12 pt-2 pl-0" style={{minHeight:"500px",boxShadow:" 0px 2px 3px #ccc"}}>
                         <MapContainer 
-                         lat={ this.props.data.latlng.length ?this. props.data.latlng[0] : 0}
-                         lng={this.props.data.latlng.length ? this.props.data.latlng[1]: 0}
-                         countryname={this.props.data.name}
+                         lat={ latlng.length ? latlng[0] : 0}
+                         lng={latlng.length ? latlng[1]: 0}
+                         countryname={name}
                          onMarkerClick={this.onMarkerClick}
                          />
                     </div>

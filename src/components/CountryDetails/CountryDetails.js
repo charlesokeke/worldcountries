@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./CountryDetails.module.css"
 
 
-const countryDetails = (props) => {
+const countryDetails = ({showCountryDetails,country:{flag,name, population,region,subregion,capital,languages,currencies},country}) => {
     
     function shortenName (name){
        if(name.length > 25){
@@ -29,21 +29,21 @@ const countryDetails = (props) => {
     }
 
     return (
-            <div className={`${styles.CardContainer} card mb-3`} onClick={() => props.showCountryDetails(props.country)} >
+            <div className={`${styles.CardContainer} card mb-3`} onClick={() => showCountryDetails(country)} >
               <div className="row no-gutters">
                 <div className="col-md-4" style={{borderRight:"1px solid #ccc"}}>
-                  <img src={props.country.flag} className="card-img" alt="country-flag"/>
+                  <img src={flag} className="card-img" alt="country-flag"/>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title">{shortenName(props.country.name)}</h5>
+                    <h5 className="card-title">{shortenName(name)}</h5>
                     <p>
-                        <small><strong>Population</strong>: {props.country.population}</small><br/>
-                        <small><strong>Region</strong>: {props.country.region}</small><br/>
-                        <small><strong>Sub-region</strong>: {props.country.subregion}</small><br/>
-                        <small><strong>Capital</strong>: {props.country.capital}</small><br/>
-                        <small><strong>Langugages</strong>: {getLanguages(props.country.languages)}</small><br/>
-                        <small><strong>Currency</strong>: {props.country.currencies[0].name}</small>
+                        <small><strong>Population</strong>: {population}</small><br/>
+                        <small><strong>Region</strong>: {region}</small><br/>
+                        <small><strong>Sub-region</strong>: {subregion}</small><br/>
+                        <small><strong>Capital</strong>: {capital}</small><br/>
+                        <small><strong>Langugages</strong>: {getLanguages(languages)}</small><br/>
+                        <small><strong>Currency</strong>: {currencies[0].name}</small>
 
 
                   </p>
