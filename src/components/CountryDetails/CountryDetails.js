@@ -12,6 +12,14 @@ const countryDetails = ({showCountryDetails,country:{flag,name, population,regio
        }
 
     }
+    function shortenCurrencyName (name){
+      if(name.length > 40){
+          return name.slice(0, 40) + "..."
+      }else{
+          return name
+      }
+
+   }
     function getLanguages(array){
         let languages = "";
         array.forEach(element => {
@@ -23,7 +31,7 @@ const countryDetails = ({showCountryDetails,country:{flag,name, population,regio
     function getCurrency(array){
         let languages = "";
         array.forEach(element => {
-            languages += `Name:${element.name}, Code:${element.code}, Symbol:${element.symbol}  `
+            languages += `Name:${element.name || "None"}, Code:${element.code || "None"}, Symbol:${element.symbol || "None"}  `
         })
         return languages.replace(/,\s*$/, "");
     }
@@ -43,7 +51,7 @@ const countryDetails = ({showCountryDetails,country:{flag,name, population,regio
                         <small><strong>Sub-region</strong>: {subregion}</small><br/>
                         <small><strong>Capital</strong>: {capital}</small><br/>
                         <small><strong>Langugages</strong>: {getLanguages(languages)}</small><br/>
-                        <small><strong>Currency</strong>: {currencies[0].name}</small>
+                        <small><strong>Currency</strong>: {shortenCurrencyName(getCurrency(currencies))}</small>
 
 
                   </p>

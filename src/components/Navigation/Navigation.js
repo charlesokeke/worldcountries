@@ -9,7 +9,7 @@ const Navigation = (props) => {
 
     return (
         <div className={styles.navbar}>
-            <a href="" onClick={reload}>World Countries</a>
+            <a href="#" onClick={reload}>World Countries</a>
             
         </div>
     )

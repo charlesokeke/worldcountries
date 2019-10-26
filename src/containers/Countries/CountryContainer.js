@@ -82,12 +82,12 @@ class CountryContainer extends PureComponent {
         return (
             <div style={{paddingTop:"100px", position:"relative",boxSizing:"border-box"}}>
                 {numberOfCountries ? 
-                <span style={{position:"absolute", color:"purple",padding:"8px",fontWeight:"500",top:"10px", right:"20px",border:"2px solid #ccc"}}>Total Countries in {this.state.countryRegion}: {this.state.numberOfCountries}</span>:
+                <span style={{position:"absolute", color:"#563d7c",padding:"8px",fontWeight:"600",top:"10px", right:"20px",boxShadow:"0px 2px 3px #ccc"}}>Total Countries in {this.state.countryRegion}: {this.state.numberOfCountries}</span>:
                  null
                  }
                 <main style={{display:"flex",justifyContent:'center', alignItems:"center", flexDirection:"column"}}>
-                    <div style={{display:"flex", justifyContent:"center", alignItems:"center", paddingBottom:"10px",position:"relative"}} >
-                        
+                    <div style={{display:"flex", justifyContent:"center", alignItems:"center", paddingBottom:"10px",position:"relative",flexDirection:"column"}} >
+                        <h6 style={{lineHeight:"1.6",boxShadow:"0px 2px 3px #ccc",padding:"2px 30px",margin:"0px",fontWeight:"600",color:"#495057",wordSpacing:"normal",letterSpacing:"normal"}}>Countries by Continent</h6>
                       <ul className={`list-group list-group-horizontal-lg ${styles.CountryRegions}`} >
                         <li className="list-group-item " onClick={() => this.continentCountriesHandler( ["asia","western asia","south-eastern asia","northern asia", "southern asia","central asia","eastern asia"])}>Asia</li>
                         <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["europe","western europe","northern europe", "southern europe","central europe","eastern europe","western europe"])}>Europe</li>
