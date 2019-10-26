@@ -4,22 +4,15 @@ import styles from "./CountryDetails.module.css"
 
 const countryDetails = ({showCountryDetails,country:{flag,name, population,region,subregion,capital,languages,currencies},country}) => {
     
-    function shortenName (name){
-       if(name.length > 25){
-           return name.slice(0, 20) + "..."
+    function shortenName (name,num){
+       if(name.length > num){
+           return name.slice(0, num) + "..."
        }else{
            return name
        }
 
     }
-    function shortenCurrencyName (name){
-      if(name.length > 40){
-          return name.slice(0, 40) + "..."
-      }else{
-          return name
-      }
-
-   }
+    
     function getLanguages(array){
         let languages = "";
         array.forEach(element => {
@@ -44,14 +37,14 @@ const countryDetails = ({showCountryDetails,country:{flag,name, population,regio
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title">{shortenName(name)}</h5>
+                    <h5 className="card-title">{shortenName(name,20)}</h5>
                     <p>
                         <small><strong>Population</strong>: {population}</small><br/>
                         <small><strong>Region</strong>: {region}</small><br/>
                         <small><strong>Sub-region</strong>: {subregion}</small><br/>
                         <small><strong>Capital</strong>: {capital}</small><br/>
                         <small><strong>Langugages</strong>: {getLanguages(languages)}</small><br/>
-                        <small><strong>Currency</strong>: {shortenCurrencyName(getCurrency(currencies))}</small>
+                        <small><strong>Currency</strong>: {shortenName(getCurrency(currencies),40)}</small>
 
 
                   </p>
