@@ -8,7 +8,14 @@ import Axios from "axios"
 class  MoreCountryDetails extends PureComponent {
     state ={
         cityDetailsPhotos:[],
-        cityName:null
+        cityName:null,
+        allCityPhotos:[]
+    }
+
+    componentDidMount(){
+        const {data} = this.props
+        console.log(data)
+       
     }
 
     onMarkerClick = (cityDetails) =>{
@@ -67,7 +74,7 @@ class  MoreCountryDetails extends PureComponent {
        
     }
     render () {
-        console.log(this.state.cityDetailsPhotos)
+       
         const {data:{callingCodes,latlng,timezones,regionalBlocs, translations,borders,altSpellings,topLevelDomain,area, name}, data} = this.props
         const {cityDetailsPhotos,cityName} = this.state
         return (
@@ -80,7 +87,7 @@ class  MoreCountryDetails extends PureComponent {
                                    <h6 className="text-muted pt-3" style={{margin:"0 auto",boxSizing:"border-box"}}>Click Map Markers</h6>
                                 } 
                             </div>
-                            <p className="text-center"> <strong>{cityName ? `The city of ${cityName}` : null}</strong></p>
+                            <p className="text-center"> <strong>{cityName ? ` ${cityName}` : null}</strong></p>
                         
                     </div>
                     <div className="col-md-6" style={{boxShadow:" 0px 2px 3px #ccc",paddingTop:'10px'}}>
@@ -95,8 +102,6 @@ class  MoreCountryDetails extends PureComponent {
                             <small><strong>Translations: </strong>{this.parseData(altSpellings)}</small><br />
                             <small><strong>TopLevelDomain: </strong>{this.parseData(topLevelDomain)}</small><br />
                             <small><strong>Area: </strong>{`${area}km`}</small>
-    
-    
     
                         </p>
                        

@@ -13,10 +13,10 @@ class MapContainer extends Component {
     data:[],
     nextPageToken:null,
     cityDetail:[],
-    showspinner:false
+    showspinner:true
     
   }
-  //https://still-coast-42220.herokuapp.com/cities
+  
   componentDidMount() {
     var stop = setInterval(() =>{
       if(this.state.nextPageToken){
@@ -28,7 +28,6 @@ class MapContainer extends Component {
     },5000)
     Axios.post("https://still-coast-42220.herokuapp.com/cities",{cities:"cities in " + this.props.countryname})
     .then(response => {
-      console.log(response.data.results)
       const cities = response.data.results.map((element,index) =>{
         return <Marker position={element.geometry.location}
                     title={element.formatted_address}
@@ -40,6 +39,8 @@ class MapContainer extends Component {
     })
     .catch((error) => {
         console.log(error)
+        this.setState({showspinner:false})
+        
     })
 
   }
@@ -64,8 +65,6 @@ class MapContainer extends Component {
       })
     }
   }
-
-  
     render(){
         return (
           
@@ -75,7 +74,11 @@ class MapContainer extends Component {
                 style={mapStyles}
                 initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
               >
-                  {this.state.data.length ? this.state.data : <div style={{position:"relative", display:"flex", alignItems:"center", justifyContent:"center"}}><Spinner animation="border" variant="info"/></div>}
+                  {this.state.data.length ? this.state.data : 
+                  <div style={{position:"relative", display:"flex", alignItems:"center", justifyContent:"center"}}>
+                    {this.state.showspinner ? <Spinner animation="border" variant="info"/>: "No data available"}
+                    </div>
+                  }
               </Map>
             
         )

@@ -48,7 +48,7 @@ class CountryContainer extends PureComponent {
         this.setState({
             countryDetails:data,numberOfCountries:null
         })
-        console.log(data)
+
     }
     
     continentCountriesHandler = (regions) => {
@@ -73,10 +73,7 @@ class CountryContainer extends PureComponent {
             })
             
     }
-
-   
     render () {
-        //console.log(this.state.numberOfCountries)
         const {numberOfCountries, value, countryDetails, countryResult} = this.state
         
         return (
@@ -87,13 +84,12 @@ class CountryContainer extends PureComponent {
                  }
                 <main style={{display:"flex",justifyContent:'center', alignItems:"center", flexDirection:"column"}}>
                     <div style={{display:"flex", justifyContent:"center", alignItems:"center", paddingBottom:"10px",position:"relative",flexDirection:"column"}} >
-                        <h6 style={{lineHeight:"1.6",boxShadow:"0px 2px 3px #ccc",padding:"2px 30px",margin:"0px",fontWeight:"600",color:"#495057",wordSpacing:"normal",letterSpacing:"normal"}}>Countries by Continent</h6>
+                        <h6 style={{lineHeight:"1.6",boxShadow:"0px 2px 3px #ccc",padding:"2px 30px",margin:"0px",fontWeight:"550",color:"#495057",wordSpacing:"normal",letterSpacing:"normal"}}>Countries by continent</h6>
                       <ul className={`list-group list-group-horizontal-lg ${styles.CountryRegions}`} >
                         <li className="list-group-item " onClick={() => this.continentCountriesHandler( ["asia","western asia","south-eastern asia","northern asia", "southern asia","central asia","eastern asia"])}>Asia</li>
                         <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["europe","western europe","northern europe", "southern europe","central europe","eastern europe","western europe"])}>Europe</li>
                         <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["americas","western america","northern america", "south america","central america"])}>Americas</li>
                         <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["africa","western africa","northern africa", "southern africa","eastern africa"])}>Africa</li>
-
                       </ul>
                       
                   </div>

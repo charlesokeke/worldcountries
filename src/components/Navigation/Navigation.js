@@ -5,7 +5,6 @@ const Navigation = (props) => {
     function reload (){
         window.location.reload(false)
     }
-
     return (
         <div className={styles.navbar}>
             <a href="#s" onClick={reload}>World Countries</a>
