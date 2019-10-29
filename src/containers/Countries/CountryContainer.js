@@ -79,16 +79,22 @@ class CountryContainer extends PureComponent {
         return (
             <div style={{paddingTop:"100px", position:"relative",boxSizing:"border-box"}}>
                 {numberOfCountries ? 
-                <span style={{boxSizing:"border-box",position:"absolute",padding:"8px",fontWeight:"500",top:"10px", right:"20px",boxShadow:"0px 2px 3px #ccc"}}>
+                <div style={{boxSizing:"border-box",position:"absolute",padding:"8px",fontWeight:"500",top:"10px", right:"44px",boxShadow:"0px 2px 3px #ccc"}}>
                     Total countries in {this.state.countryRegion.toLowerCase()}: <span style={{fontSize:"12px",borderRadius:"50%",padding:"5px", color:"#fff", backgroundColor:'#563d7c'}}>{this.state.numberOfCountries}</span>
-                    </span>:
+                    </div>:
                  null
                  }
                 <main style={{display:"flex",justifyContent:'center', alignItems:"center", flexDirection:"column"}}>
                     <div style={{display:"flex", justifyContent:"center", alignItems:"center", paddingBottom:"10px",position:"relative",flexDirection:"column"}} >
-                        <h6 style={{lineHeight:"1.6",boxShadow:"0px 2px 3px #ccc",padding:"2px 30px",marginBottom:"2px",fontWeight:"550",color:"#495057",wordSpacing:"normal",letterSpacing:"2px"}}>Countries by continent</h6>
+                        <h6 style={{lineHeight:"1.6",boxShadow:"0px 2px 3px #ccc",padding:"2px 30px",marginBottom:"0px",fontWeight:"550",color:"#495057",wordSpacing:"normal",letterSpacing:"2px"}}>Countries by continent</h6>
+                        <div style={{margin:"0px",padding:"0px",height:"10px"}}>
+                            <div style={{display:"inline-block",width:"1px",height:"100%",margin:"0px 43px",backgroundColor:"#ccc"}}> </div>
+                            <div style={{display:"inline-block",width:"1px",height:"100%",margin:"0px 44px",backgroundColor:"#ccc"}}></div>
+                            <div style={{display:"inline-block",width:"1px",height:"100%",margin:"0px 44px",backgroundColor:"#ccc"}}></div>
+                            <div style={{display:"inline-block",width:"1px",height:"100%",margin:"0px 43px",backgroundColor:"#ccc"}}></div>
+                        </div>
                       <ul className={`list-group list-group-horizontal-lg ${styles.CountryRegions}`} >
-                        <li className="list-group-item " onClick={() => this.continentCountriesHandler( ["asia","western asia","south-eastern asia","northern asia", "southern asia","central asia","eastern asia"])}>Asia</li>
+                        <li className="list-group-item "onClick={() => this.continentCountriesHandler( ["asia","western asia","south-eastern asia","northern asia", "southern asia","central asia","eastern asia"])}>Asia</li>
                         <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["europe","western europe","northern europe", "southern europe","central europe","eastern europe","western europe"])}>Europe</li>
                         <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["americas","western america","northern america", "south america","central america"])}>Americas</li>
                         <li className="list-group-item" onClick={() => this.continentCountriesHandler( ["africa","western africa","northern africa", "southern africa","eastern africa"])}>Africa</li>
@@ -104,9 +110,9 @@ class CountryContainer extends PureComponent {
                             onChange={this.inputHandler}
                             onBlur={this.clearInput}
                         />
-                        <span className={styles['a-field__label-wrap']}>
-                        <span className={`${styles["a-field__label"]} text-muted`}>Search for countries </span>
-                        </span>
+                        <div className={styles['a-field__label-wrap']}>
+                        <div className={`${styles["a-field__label"]} text-muted`}>Search for countries </div>
+                        </div>
                     </label>   
                 </div>
                 
