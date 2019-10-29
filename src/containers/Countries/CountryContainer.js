@@ -87,7 +87,7 @@ class CountryContainer extends PureComponent {
                 <main style={{display:"flex",justifyContent:'center', alignItems:"center", flexDirection:"column"}}>
                     <div style={{display:"flex", justifyContent:"center", alignItems:"center", paddingBottom:"10px",position:"relative",flexDirection:"column"}} >
                         <h6 style={{lineHeight:"1.6",boxShadow:"0px 2px 3px #ccc",padding:"2px 30px",marginBottom:"0px",fontWeight:"550",color:"#495057",wordSpacing:"normal",letterSpacing:"2px"}}>Countries by continent</h6>
-                        <div style={{margin:"0px",padding:"0px",height:"10px"}}>
+                        <div style={{margin:"0px",padding:"0px",height:"13px"}}>
                             <div style={{display:"inline-block",width:"1px",height:"100%",margin:"0px 43px",backgroundColor:"#ccc"}}> </div>
                             <div style={{display:"inline-block",width:"1px",height:"100%",margin:"0px 44px",backgroundColor:"#ccc"}}></div>
                             <div style={{display:"inline-block",width:"1px",height:"100%",margin:"0px 44px",backgroundColor:"#ccc"}}></div>
