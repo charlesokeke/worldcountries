@@ -1,9 +1,16 @@
 import React from "react"
 import styles from "./CountryDetails.module.css"
-
-
+import { fadeIn } from 'react-animations';
+import Radium, {StyleRoot} from 'radium';
+ 
+const animationStyles = {
+  fadeIn: {
+    animation: 'x 1s',
+    animationName: Radium.keyframes(fadeIn, 'fadeIn')
+  }
+}
 const countryDetails = ({showCountryDetails,country:{flag,name, population,region,subregion,capital,languages,currencies},country}) => {
-    
+
     function shortenName (name,num){
        if(name.length > num){
            return name.slice(0, num) + "..."
@@ -30,7 +37,8 @@ const countryDetails = ({showCountryDetails,country:{flag,name, population,regio
     }
 
     return (
-            <div className={`${styles.CardContainer} card mb-3`} onClick={() => showCountryDetails(country)} >
+            <StyleRoot>
+            <div className={`${styles.CardContainer} card mb-3`} onClick={() => showCountryDetails(country)} style={animationStyles.fadeIn}>
               <div className="row no-gutters">
                 <div className="col-md-4" style={{borderRight:"1px solid #ccc"}}>
                   <img src={flag} className="card-img" alt="country-flag"/>
@@ -45,13 +53,12 @@ const countryDetails = ({showCountryDetails,country:{flag,name, population,regio
                         <small><strong>Capital</strong>: {capital}</small><br/>
                         <small><strong>Langugages</strong>: {getLanguages(languages)}</small><br/>
                         <small><strong>Currency</strong>: {shortenName(getCurrency(currencies),40)}</small>
-
-
-                  </p>
+                   </p>
                   </div>
                 </div>
               </div>
             </div>  
+          </StyleRoot>
     )
 }
 

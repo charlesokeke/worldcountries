@@ -8,3 +8,31 @@
     text-align: center;
     padding-top:10px;
  }
+
+ .top {
+    background-color:#f2f2f2;
+    border: 1px solid #563d7c;
+    border-radius: 4px;
+    color: #5F6368;
+    font-family: arial,sans-serif;
+    font-size: 14px;
+    margin: 2px 0px;
+    padding: 2px;
+    min-width: 54px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    box-shadow:0px 2px 3px #ccc
+ }
+ .top:hover{
+     transform: scale(1.1);
+     color:#fff;
+    background-color:#563d7c
+ }
+ 
+ .innerFooter{
+     display:flex;
+     flex-direction: row-reverse;
+     align-items: center;
+     padding: 3px;
+ }

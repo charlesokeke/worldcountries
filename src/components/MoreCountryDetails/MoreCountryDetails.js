@@ -83,7 +83,9 @@ class  MoreCountryDetails extends PureComponent {
                     <div className="col-md-6 " style={{boxShadow:" 0px 2px 3px #ccc",paddingTop:"5px"}}>
                         <CountryDetails country={data} showCountryDetails={this.test}/>
                             <div style={{display:"flex",boxShadow:" 0px 2px 3px #ccc", position:"relative",boxSizing:"border-box", height:"100px",flexDirection:"row",backgroundColor:"#ccc",marginBottom:"3px", overflow:"auto",}}>
-                                   {cityDetailsPhotos.length ? cityDetailsPhotos : 
+                                   {cityDetailsPhotos.length ? 
+                                     cityDetailsPhotos
+                                   : 
                                    <h6 className="text-muted pt-3" style={{margin:"0 auto",boxSizing:"border-box"}}>Click Map Markers</h6>
                                 } 
                             </div>

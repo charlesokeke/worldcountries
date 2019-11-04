@@ -3,8 +3,15 @@ import Axios from "axios"
 import CountryDetails from "../../components/CountryDetails/CountryDetails"
 import MoreCountryDetail from "../../components/MoreCountryDetails/MoreCountryDetails"
 import styles from "./CountryContainer.module.css"
-
-
+import { fadeIn } from 'react-animations';
+import Radium, {StyleRoot} from 'radium';
+ 
+const animationStyles = {
+  fadeIn: {
+    animation: 'x 1s',
+    animationName: Radium.keyframes(fadeIn, 'fadeIn')
+  }
+}
 
 class CountryContainer extends PureComponent {
     state = {
@@ -79,9 +86,12 @@ class CountryContainer extends PureComponent {
         return (
             <div style={{paddingTop:"100px", position:"relative",boxSizing:"border-box"}}>
                 {numberOfCountries ? 
-                <div style={{boxSizing:"border-box",position:"absolute",padding:"8px",fontWeight:"500",top:"10px", right:"44px",boxShadow:"0px 2px 3px #ccc"}}>
+                <StyleRoot>
+                <div className={styles.countryCount} style={animationStyles.fadeIn}>
                     Total countries in {this.state.countryRegion.toLowerCase()}: <span style={{fontSize:"12px",borderRadius:"50%",padding:"5px", color:"#fff", backgroundColor:'#563d7c'}}>{this.state.numberOfCountries}</span>
-                    </div>:
+                    </div>
+                </StyleRoot>
+                    :
                  null
                  }
                 <main style={{display:"flex",justifyContent:'center', alignItems:"center", flexDirection:"column"}}>
