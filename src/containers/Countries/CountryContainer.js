@@ -25,6 +25,8 @@ class CountryContainer extends PureComponent {
     componentDidMount (){
         Axios.get("https://restcountries.eu/rest/v2/all").then(response => {
             this.setState({countries:response.data})
+        }).catch(error =>{
+            console.log(error)
         })
     }
     componentDidUpdate() {
@@ -67,7 +69,7 @@ class CountryContainer extends PureComponent {
         .map((element,index) => {
             countryName = element.region
              return <CountryDetails 
-                        key={index} 
+                        key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)} 
                         country={element} 
                         showCountryDetails={this.getCountryDetails}
                     />

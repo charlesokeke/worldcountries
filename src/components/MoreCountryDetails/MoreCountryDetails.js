@@ -4,7 +4,6 @@ import MapContainer from "../MapContainer/MapContainer"
 import Axios from "axios"
 
 
-
 class  MoreCountryDetails extends PureComponent {
     state ={
         cityDetailsPhotos:[],
@@ -12,17 +11,10 @@ class  MoreCountryDetails extends PureComponent {
         allCityPhotos:[]
     }
 
-    componentDidMount(){
-        const {data} = this.props
-        console.log(data)
-       
-    }
 
     onMarkerClick = (cityDetails) =>{
         Axios.post("https://still-coast-42220.herokuapp.com/city_details",{cityDetails:cityDetails})
         .then(response => {
-          //console.log(response.data.result)
-          //console.log(response.data.result.name)
           const cityPhotos = response.data.result.photos.map((element) => {
               return  <img 
                         key={element.photo_reference} 
