@@ -9,4 +9,4 @@ This app is compatible with most major browser with the exception of internet ex
 
 ## Technologies Used
 
-### React
+React, Node.js, CSS, HTML, Material UI, JavaScript
