@@ -1,7 +1,7 @@
 ## What the Application Does
 
 The application allows users to search for any  country in the world and provides details about the country.
-It uses Google Maps React API to display major cities of countries on a map with interactive features. 
+It uses Google Maps API to display major cities of countries on a map with interactive functionalities. 
 
 ## Browser Compatibility
 
