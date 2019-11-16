@@ -9,4 +9,4 @@ This app is compatible with most major browser with the exception of internet ex
 
 ## Technologies Used
 
-React, Node.js, CSS, HTML, Material UI, JavaScript
+React, Node.js, CSS, HTML, Material UI, JavaScript and Google Places & Maps API
