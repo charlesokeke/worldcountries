@@ -5,7 +5,7 @@ It uses Google Maps API to display major cities of countries on a map with inter
 
 ## Browser Compatibility
 
-This app is compatible with most major browser with the exception of internet explorer.
+This app is compatible with all major browser with the exception of internet explorer.
 
 ## Technologies Used
 
