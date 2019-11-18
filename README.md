@@ -9,6 +9,6 @@ This app is compatible with most major browser with the exception of internet ex
 
 ## Technologies Used
 
-React, Node.js, CSS, HTML, Bootstrap, JavaScript and Google Places & Maps API
+React, Node.js, CSS, HTML, Bootstrap, JavaScript and Google Places & Maps API and Express
 
 Live Demo  https://charlesokeke.github.io/worldcountries/
