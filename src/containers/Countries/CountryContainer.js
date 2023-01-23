@@ -24,7 +24,7 @@ class CountryContainer extends PureComponent {
     } 
     componentDidMount (){
         Axios.get("https://restcountries.com/v3.1/all").then(response => {
-               this.setState({countries:response.data})
+                this.setState({countries:response.data})
         }).catch(error =>{
             console.log(error)
         })
