@@ -1,7 +1,8 @@
 ## What the Application Does
 
 The application allows users to search for any  country in the world and provides details about the country.
-It uses Google Maps API to display major cities of countries on a map with interactive functionalities. 
+It uses Google Maps API to display major cities of countries on a map with interactive functionalities. Currently,
+the backend is still under construction and as a consequence, the site is not fully functional.
 
 ## Browser Compatibility
 
